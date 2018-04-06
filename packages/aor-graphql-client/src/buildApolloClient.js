@@ -1,4 +1,8 @@
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const cache = new InMemoryCache();
 
 export default options => {
     if (!options) {
@@ -8,9 +12,15 @@ export default options => {
     const { uri, ...otherOptions } = options;
 
     if (uri) {
+
+        const httpLink = createHttpLink({
+            uri: uri,
+          });
+
         return new ApolloClient({
             ...otherOptions,
-            networkInterface: createNetworkInterface({ uri }),
+            link: httpLink,
+            cache: cache
         });
     }
 
