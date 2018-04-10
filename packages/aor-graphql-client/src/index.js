@@ -1,6 +1,6 @@
 import merge from 'lodash.merge';
 import get from 'lodash.get';
-import { ApolloClient } from 'apollo-client';
+// import { ApolloClient } from 'apollo-client';
 import pluralize from 'pluralize';
 
 import buildApolloClient from './buildApolloClient';
@@ -44,6 +44,8 @@ export default async options => {
     } = merge({}, defaultOptions, options);
 
     const client = clientObject || buildApolloClient(clientOptions);
+
+    console.log("Got client", client);
 
     let introspectionResults;
     if (introspection) {

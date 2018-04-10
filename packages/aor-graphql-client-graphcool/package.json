@@ -26,7 +26,7 @@
     ]
   },
   "devDependencies": {
-    "aor-graphql-client": "^0.0.2",
+    "aor-graphql-client": "../aor-graphql-client",
     "babel-cli": "~6.24.1",
     "babel-core": "~6.24.1",
     "babel-eslint": "~7.2.3",
